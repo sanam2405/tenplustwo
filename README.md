@@ -1,6 +1,6 @@
 # tenplustwo
 
-_CLI to fetch and save HS and Madhyamik results in a bulk_
+_CLI to fetch and save HS and Madhyamik results in bulk_
 
 ## Sample HS Result
 
@@ -54,7 +54,7 @@ results
 
 ```bash
     git clone git@github.com:sanam2405/tenplustwo.git
-    cd rp
+    cd tenplustwo
 ```
 
 - Install the dependencies
