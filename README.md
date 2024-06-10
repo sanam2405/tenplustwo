@@ -2,6 +2,10 @@
 
 _CLI to fetch and save HS and Madhyamik results in a bulk_
 
+## Sample Result
+
+![](results/sampleoutput.png)
+
 ## Setting up locally
 
 - Clone the tenplustwo repository
