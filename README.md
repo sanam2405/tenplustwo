@@ -2,9 +2,51 @@
 
 _CLI to fetch and save HS and Madhyamik results in a bulk_
 
-## Sample Result
+## Sample HS Result
 
 ![](results/sampleoutput.png)
+
+## Sample Directory Structure
+
+```bash
+results
+├── HS2024
+│   ├── 432521-1247.html
+│   ├── 432521-1248.html
+│   ├── 432521-1249.html
+│   ├── 432521-1250.html
+│   ├── 432521-1251.html
+│   ├── 432521-1252.html
+│   ├── 432521-1253.html
+│   ├── 432521-1254.html
+│   ├── 432521-1255.html
+│   ├── 432521-1256.html
+│   ├── 432521-1257.html
+│   ├── 432521-1258.html
+│   ├── 432521-1259.html
+│   ├── 432521-1260.html
+│   ├── 432521-1261.html
+│   ├── 432521-1262.html
+│   ├── 432521-1263.html
+│   ├── 432521-1264.html
+│   ├── 432521-1265.html
+│   ├── 432521-1266.html
+│   ├── 432521-1267.html
+│   ├── 432521-1268.html
+│   ├── 432521-1269.html
+│   ├── 432521-1270.html
+│   ├── 432521-1271.html
+│   ├── 432521-1272.html
+│   ├── 432521-1273.html
+│   ├── 432521-1274.html
+│   ├── 432521-1275.html
+│   ├── 432521-1276.html
+│   ├── 432521-1277.html
+│   ├── 432521-1278.html
+│   ├── 432521-1279.html
+│   └── 432521-1280.html
+└── sampleoutput.png
+```
 
 ## Setting up locally
 
