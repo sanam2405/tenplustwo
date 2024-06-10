@@ -53,17 +53,25 @@ results
 - Install the _[tenplustwo](https://www.npmjs.com/package/tenplustwo)_ npm package
 
 ```bash
-   npm install tenplustwo
+   npm install -g tenplustwo
 ```
 
 - Run the _tenplustwo_ command from the CLI
 
 ```bash
+   tenplustwo --help
    tenplustwo -y <year> -r <roll> -l <lower_limit> -u <upper_limit>
    tenplustwo --year <year> --roll <roll> --lower <lower_limit> --upper <upper_limit>
 ```
 
-## Setting up locally
+Example
+
+```bash
+   tenplustwo -y 2024 -r 432521 -l 1247 -u 1350
+   tenplustwo --year 2024 --roll 432521 --lower 1247 --upper 1350
+```
+
+Setting up locally
 
 - Clone the tenplustwo repository
 

@@ -20,13 +20,6 @@ program
   .option("-r, --roll <roll>", "Roll number")
   .option("-l, --lower <lower>", "Lower limit of rno")
   .option("-u, --upper <upper>", "Upper limit of rno")
-  .on("--help", () => {
-    console.log("");
-    console.log("Example call:");
-    console.log(
-      "  tenplustwo --year 2024 --roll 432521 --lower 1247 --upper 1250",
-    );
-  })
   .parse(process.argv);
 
 const options: Options = program.opts() as Options;
