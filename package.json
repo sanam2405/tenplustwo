@@ -1,12 +1,16 @@
 {
   "name": "tenplustwo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CLI to fetch and save HS and Madhyamik results in a bulk",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsc -b",
+    "prepublishOnly": "npm run build",
     "start": "node dist/index.js"
+  },
+  "bin": {
+    "tenplustwo": "./bin/bin.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +28,7 @@
   },
   "homepage": "https://github.com/sanam2405/tenplustwo#readme",
   "dependencies": {
+    "@types/commander": "^2.12.2",
     "dotenv": "^16.4.5",
     "node-fetch": "^3.3.2",
     "url": "^0.11.3"

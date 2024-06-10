@@ -29,7 +29,8 @@ Promise.resolve(options).then(({ year, roll, lower, upper }) => {
 
 async function postResult(year: number, roll: string, lower: number, upper: number) {
   const { default: fetch } = await import('node-fetch');
-  const BASE_URL = process.env.URL;
+  // const BASE_URL = process.env.URL;
+  const BASE_URL: string = 'https://wbresults.nic.in';
 
   if (!BASE_URL) {
     console.error('Base URL is not defined in the environment variables.');
