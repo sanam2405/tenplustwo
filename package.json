@@ -1,6 +1,6 @@
 {
   "name": "tenplustwo",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CLI to fetch and save HS and Madhyamik results in a bulk",
   "main": "dist/index.js",
   "type": "module",
@@ -10,7 +10,7 @@
     "start": "node dist/index.js"
   },
   "bin": {
-    "tenplustwo": "./bin/bin.js"
+    "tenplustwo": "./bin.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,9 @@
   "keywords": [
     "automation",
     "scripting",
-    "spoofing"
+    "spoofing",
+    "madhyamik",
+    "highersecondary"
   ],
   "author": "Manas Pratim Biswas",
   "license": "ISC",
