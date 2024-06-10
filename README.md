@@ -48,6 +48,21 @@ results
 └── sampleoutput.png
 ```
 
+## Usage
+
+- Install the _[tenplustwo](https://www.npmjs.com/package/tenplustwo)_ npm package
+
+```bash
+   npm install tenplustwo
+```
+
+- Run the _tenplustwo_ command from the CLI
+
+```bash
+   tenplustwo -y <year> -r <roll> -l <lower_limit> -u <upper_limit>
+   tenplustwo --year <year> --roll <roll> --lower <lower_limit> --upper <upper_limit>
+```
+
 ## Setting up locally
 
 - Clone the tenplustwo repository
