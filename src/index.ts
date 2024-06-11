@@ -5,7 +5,7 @@ import * as path from "path";
 import * as dotenv from "dotenv";
 import { program } from "commander";
 import fetch from "node-fetch";
-import { WBRESULTS_URL, ARCHIVES_BASE_URL } from "./constants";
+// import { WBRESULTS_URL, ARCHIVES_BASE_URL } from "./constants";
 
 dotenv.config();
 
@@ -37,11 +37,11 @@ if (!options.year || !options.source ||
 }
 
 if (options.source === "wb") {
-  const baseURL = WBRESULTS_URL;
+  const baseURL = "https://wbresults.nic.in";
   const url = `${baseURL}/highersecondary${options.year}/wbhsresult${parseInt(options.year) % 100}.asp`;
   postResultWB(parseInt(options.year), options.roll!, parseInt(options.lower!), parseInt(options.upper!), url, baseURL);
 } else if (options.source === "archives") {
-  const baseURL = ARCHIVES_BASE_URL;
+  const baseURL = "https://resultsarchives.nic.in/";
   const url = `${baseURL}/cbse${options.year}/ScoreCard12th/12thMainL3`;
   postResultArchives(parseInt(options.year), options.admitCardId!, url, baseURL);
 } else {
@@ -108,7 +108,7 @@ async function postResultArchives(
   url: string,
   baseURL: string
 ) {
-  const resultDir = path.join(process.cwd(), "results");
+  const resultDir = path.join(process.cwd(), "../results");
   const marksheetDir = path.join(resultDir, `HS${year}`);
 
   if (fs.existsSync(marksheetDir)) {
