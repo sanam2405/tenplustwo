@@ -71,7 +71,7 @@ Example
    tenplustwo --year 2024 --roll 432521 --lower 1247 --upper 1350
 ```
 
-Setting up locally
+## Setting up locally
 
 - Clone the tenplustwo repository
 
