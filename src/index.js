@@ -1,22 +1,13 @@
 #!/usr/bin/env node
 
-import * as fs from "fs";
-import * as path from "path";
-import * as dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
+import dotenv from "dotenv";
 import { program } from "commander";
 import fetch from "node-fetch";
-import { WBRESULTS_URL, ARCHIVES_BASE_URL } from "./constants";
+import { WBRESULTS_URL, ARCHIVES_BASE_URL } from "./constants.js";
 
 dotenv.config();
-
-interface Options {
-  year: string;
-  roll?: string;
-  lower?: string;
-  upper?: string;
-  admitCardId?: string;
-  source: string;
-}
 
 program
   .option("-y, --year <year>", "Year of examination")
@@ -27,7 +18,7 @@ program
   .option("-s, --source <source>", "Source of results: 'wb' or 'archives'")
   .parse(process.argv);
 
-const options: Options = program.opts() as Options;
+const options = program.opts();
 
 if (!options.year || !options.source || 
     (options.source === 'wb' && (!options.roll || !options.lower || !options.upper)) || 
@@ -39,23 +30,23 @@ if (!options.year || !options.source ||
 if (options.source === "wb") {
   const baseURL = WBRESULTS_URL;
   const url = `${baseURL}/highersecondary${options.year}/wbhsresult${parseInt(options.year) % 100}.asp`;
-  postResultWB(parseInt(options.year), options.roll!, parseInt(options.lower!), parseInt(options.upper!), url, baseURL);
+  postResultWB(parseInt(options.year), options.roll, parseInt(options.lower), parseInt(options.upper), url, baseURL);
 } else if (options.source === "archives") {
   const baseURL = ARCHIVES_BASE_URL;
   const url = `${baseURL}/cbse${options.year}/ScoreCard12th/12thMainL3`;
-  postResultArchives(parseInt(options.year), options.admitCardId!, url, baseURL);
+  postResultArchives(parseInt(options.year), options.admitCardId, url, baseURL);
 } else {
   console.error("Invalid source option. Use 'wb' or 'archives'.");
   process.exit(1);
 }
 
 async function postResultWB(
-  year: number,
-  roll: string,
-  lower: number,
-  upper: number,
-  url: string,
-  baseURL: string
+  year,
+  roll,
+  lower,
+  upper,
+  url,
+  baseURL
 ) {
   const resultDir = path.join(process.cwd(), "results");
   const marksheetDir = path.join(resultDir, `HS${year}`);
@@ -103,10 +94,10 @@ async function postResultWB(
 }
 
 async function postResultArchives(
-  year: number,
-  admitCardId: string,
-  url: string,
-  baseURL: string
+  year,
+  admitCardId,
+  url,
+  baseURL
 ) {
   const resultDir = path.join(process.cwd(), "results");
   const marksheetDir = path.join(resultDir, `HS${year}`);
