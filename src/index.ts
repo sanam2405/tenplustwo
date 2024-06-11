@@ -49,13 +49,18 @@ async function postResult(
     return;
   }
 
-  const resultDir = path.join(process.cwd(), "results", `HS${year}`);
+  const resultDir = path.join(process.cwd(), "results");
+  const marksheetDir = path.join(resultDir, `HS${year}`);
 
-  if (fs.existsSync(resultDir)) {
-    fs.rmSync(resultDir, { recursive: true });
+  if (fs.existsSync(marksheetDir)) {
+    fs.rmSync(marksheetDir, { recursive: true });
   }
 
-  fs.mkdirSync(resultDir, { recursive: true });
+  if (!fs.existsSync(resultDir)) {
+    fs.mkdirSync(resultDir, { recursive: true });
+  }
+
+  fs.mkdirSync(marksheetDir, { recursive: true });
 
   const url = `${BASE_URL}/highersecondary${year}/wbhsresult${year % 100}.asp`;
 
@@ -82,7 +87,7 @@ async function postResult(
       }
 
       const result = await response.text();
-      const filename = path.join(resultDir, `${roll}-${rno}.html`);
+      const filename = path.join(marksheetDir, `${roll}-${rno}.html`);
       fs.writeFileSync(filename, result);
       console.log(`Result for Roll ${roll} Number ${rno} saved to ${filename}`);
     } catch (error) {
