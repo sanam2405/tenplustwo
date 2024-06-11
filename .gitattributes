@@ -1,1 +1,1 @@
-*.js linguist-language=ignore
+*.js linguist-vendored=false
