@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import * as fs from "fs";
-import * as path from "path";
-import * as dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
+import dotenv from "dotenv";
 import { program } from "commander";
 import fetch from "node-fetch";
-// import { WBRESULTS_URL, ARCHIVES_BASE_URL } from "./constants";
+//import { WBRESULTS_URL, ARCHIVES_BASE_URL } from "./constants";
 
 dotenv.config();
 
@@ -18,35 +18,44 @@ interface Options {
   source: string;
 }
 
+const WB_BASE_URL = "https://wbresults.nic.in";
+const ARCHIVES_BASE_URL = "https://resultsarchives.nic.in/";
+
 program
   .option("-y, --year <year>", "Year of examination")
   .option("-r, --roll <roll>", "Roll number (required for 'wb' source)")
   .option("-l, --lower <lower>", "Lower limit of roll number (required for 'wb' source)")
   .option("-u, --upper <upper>", "Upper limit of roll number (required for 'wb' source)")
-  .option("-a, --admitCardId <admitCardId>", "Admit card ID (required for 'archives' source)")
-  .option("-s, --source <source>", "Source of results: 'wb' or 'archives'")
+  .option("-a, --admitCardId <admitCardId>", "Admit card ID (required for 'cbse' source)")
+  .option("-s, --source <source>", "Source of results: 'wb' or 'cbse'")
   .parse(process.argv);
 
 const options: Options = program.opts() as Options;
 
 if (!options.year || !options.source || 
     (options.source === 'wb' && (!options.roll || !options.lower || !options.upper)) || 
-    (options.source === 'archives' && !options.admitCardId)) {
+    (options.source === 'cbse' && !options.admitCardId)) {
   console.error("All the required flags (year, source, and respective source-specific parameters) are not provided.");
   process.exit(1);
 }
 
-if (options.source === "wb") {
-  const baseURL = "https://wbresults.nic.in";
-  const url = `${baseURL}/highersecondary${options.year}/wbhsresult${parseInt(options.year) % 100}.asp`;
-  postResultWB(parseInt(options.year), options.roll!, parseInt(options.lower!), parseInt(options.upper!), url, baseURL);
-} else if (options.source === "archives") {
-  const baseURL = "https://resultsarchives.nic.in/";
-  const url = `${baseURL}/cbse${options.year}/ScoreCard12th/12thMainL3`;
-  postResultArchives(parseInt(options.year), options.admitCardId!, url, baseURL);
-} else {
-  console.error("Invalid source option. Use 'wb' or 'archives'.");
-  process.exit(1);
+switch(options.source) {
+  case "wb": {
+    const baseURL = WB_BASE_URL;
+    const url = `${baseURL}/highersecondary${options.year}/wbhsresult${parseInt(options.year) % 100}.asp`;
+    postResultWB(parseInt(options.year), options.roll!, parseInt(options.lower!), parseInt(options.upper!), url, baseURL);
+    break;
+  }
+  case "cbse": {
+    const baseURL = ARCHIVES_BASE_URL;
+    const url = `${baseURL}/cbse${options.year}/ScoreCard12th/12thMainL3`;
+    postResultArchives(parseInt(options.year), options.admitCardId!, url, baseURL);
+    break;
+  }
+  default: {
+    console.error("Invalid source option. Use 'wb' or 'cbse'.");
+    process.exit(1);
+  }
 }
 
 async function postResultWB(
