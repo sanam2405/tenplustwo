@@ -4,6 +4,7 @@ _CLI to fetch and save HS and Madhyamik results in bulk_
 
 ## Sample HS Result
 
+![](./Animation.gif)
 ![](results/sampleoutput.png)
 
 ## Sample Directory Structure
