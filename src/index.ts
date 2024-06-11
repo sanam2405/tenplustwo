@@ -108,7 +108,7 @@ async function postResultArchives(
   url: string,
   baseURL: string
 ) {
-  const resultDir = path.join(process.cwd(), "../results");
+  const resultDir = path.join(process.cwd(), "results");
   const marksheetDir = path.join(resultDir, `HS${year}`);
 
   if (fs.existsSync(marksheetDir)) {
